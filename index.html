@@ -131,6 +131,7 @@ textarea{resize:vertical;min-height:72px}
 <script>
 // ── CONFIGURACIÓN ──────────────────────────────────────────
 const WEBHOOK_URL = 'https://n8n.openip.cl/webhook/facturas-corporativas';
+const TOKEN       = 'appr-2026-xK9mN3pQ7rL2';
 // ──────────────────────────────────────────────────────────
 
 let selectedFile = null;
@@ -208,6 +209,7 @@ async function enviar() {
   fd.append('monto',        document.getElementById('monto').value);
   fd.append('moneda',       document.getElementById('moneda').value);
   fd.append('archivo',      selectedFile);
+  fd.append('token',        TOKEN);
 
   try {
     await fetch(WEBHOOK_URL, { method: 'POST', body: fd });
